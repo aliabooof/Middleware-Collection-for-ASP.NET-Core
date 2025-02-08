@@ -1,5 +1,3 @@
-# Root README.md
-
 # Middleware Collection for ASP.NET Core
 
 This repository contains a collection of reusable middlewares for ASP.NET Core applications. Each middleware is designed to handle a specific aspect of API functionality, and they can be plugged into your projects with minimal effort.
@@ -8,7 +6,7 @@ This repository contains a collection of reusable middlewares for ASP.NET Core a
 
 ## Table of Contents
 
-1. [GeoMiddleware](MiddleWares/MiddleWares/GeographyMiddleware/README.md)
+1. [GeoMiddleware](MiddleWares/MiddleWares/GeographyMiddleware/GeoMiddleware README.md)
 2. [MiddlewareX](./Middleware/MiddlewareX/README.md) (Coming Soon)
 
 ---
