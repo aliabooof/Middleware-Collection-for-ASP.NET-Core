@@ -1,5 +1,3 @@
-# GeoMiddleware README.md
-
 # GeoMiddleware
 
 `GeoMiddleware` blocks requests from specific countries based on their IP address using an external geolocation service.
