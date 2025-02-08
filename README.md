@@ -40,7 +40,4 @@ Contributions are welcome! If you’d like to add a new middleware, please:
 
 ---
 
-## License
-
-[MIT](LICENSE)
 
