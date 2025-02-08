@@ -8,7 +8,7 @@ This repository contains a collection of reusable middlewares for ASP.NET Core a
 
 ## Table of Contents
 
-1. [GeoMiddleware](./Middleware/GeoMiddleware/README.md)
+1. [GeoMiddleware](MiddleWares/MiddleWares/GeographyMiddleware/README.md)
 2. [MiddlewareX](./Middleware/MiddlewareX/README.md) (Coming Soon)
 
 ---
