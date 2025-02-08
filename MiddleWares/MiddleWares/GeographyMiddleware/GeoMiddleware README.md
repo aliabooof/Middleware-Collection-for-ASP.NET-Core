@@ -47,7 +47,7 @@ Ensure you have added any necessary packages, such as `Microsoft.Extensions.Conf
 var builder = WebApplication.CreateBuilder(args);
 
 // Register GeoLocation services
-builder.Services.AddGeoLocationServices();
+builder.Services.AddHttpClient<IGeoLocationService,GeoLocationService>();
 
 var app = builder.Build();
 
