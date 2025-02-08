@@ -2,7 +2,7 @@
 using MiddleWares.Configureation;
 using System.Text.Json;
 
-namespace MiddleWares.Services
+namespace MiddleWares.Services.GeoServices
 {
     public class GeoLocationService : IGeoLocationService
     {

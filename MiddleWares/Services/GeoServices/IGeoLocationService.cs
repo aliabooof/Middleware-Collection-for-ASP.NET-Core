@@ -1,4 +1,4 @@
-﻿namespace MiddleWares.Services
+﻿namespace MiddleWares.Services.GeoServices
 {
     public interface IGeoLocationService
     {

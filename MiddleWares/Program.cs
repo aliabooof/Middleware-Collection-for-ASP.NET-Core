@@ -1,7 +1,7 @@
 
 using MiddleWares.Configureation;
-using MiddleWares.MiddleWares;
-using MiddleWares.Services;
+using MiddleWares.MiddleWares.GeographyMiddleware;
+using MiddleWares.Services.GeoServices;
 
 namespace MiddleWares
 {

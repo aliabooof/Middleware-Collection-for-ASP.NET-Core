@@ -1,5 +1,4 @@
-﻿
-namespace MiddleWares.Services
+﻿namespace MiddleWares.Services.GeoServices
 {
     public class MockGeoLocationService : IGeoLocationService
     {
@@ -12,9 +11,9 @@ namespace MiddleWares.Services
 
         public Task<string> GetCountryByIpAsync(string ipAddress)
         {
-            
+
             _mockIpToCountry.TryGetValue(ipAddress, out var country);
-            return Task.FromResult(country??"Unknown");
+            return Task.FromResult(country ?? "Unknown");
         }
     }
 

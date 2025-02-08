@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Options;
 using MiddleWares.Configureation;
-using MiddleWares.Services;
+using MiddleWares.Services.GeoServices;
 
-namespace MiddleWares.MiddleWares
+namespace MiddleWares.MiddleWares.GeographyMiddleware
 {
     public class GeographyMiddleware
     {
@@ -10,23 +10,23 @@ namespace MiddleWares.MiddleWares
         private readonly ILogger<GeographyMiddleware> _logger;
         private readonly IOptionsMonitor<GeoSettings> _geoSettings;
 
-        public GeographyMiddleware(RequestDelegate next, ILogger<GeographyMiddleware> logger,IOptionsMonitor<GeoSettings>geoSettings)
-        {     
+        public GeographyMiddleware(RequestDelegate next, ILogger<GeographyMiddleware> logger, IOptionsMonitor<GeoSettings> geoSettings)
+        {
             _next = next;
-            _logger= logger;
+            _logger = logger;
             _geoSettings = geoSettings;
         }
 
-        public async Task Invoke(HttpContext context , IGeoLocationService geoLocationService)
+        public async Task Invoke(HttpContext context, IGeoLocationService geoLocationService)
         {
-            var clientIp=context.Connection.RemoteIpAddress?.ToString();
+            var clientIp = context.Connection.RemoteIpAddress?.ToString();
 
             /* // for testing 
              var clientIp = context.Request.Headers["X-Forwarded-For"].FirstOrDefault()
                      ?? context.Connection.RemoteIpAddress?.ToString();*/
 
 
-            if (String.IsNullOrEmpty(clientIp))
+            if (string.IsNullOrEmpty(clientIp))
             {
                 _logger.LogWarning("Client IP could not be determined. Access denied.");
                 context.Response.StatusCode = StatusCodes.Status403Forbidden;
@@ -45,8 +45,8 @@ namespace MiddleWares.MiddleWares
             }
 
             var blockedCountries = _geoSettings.CurrentValue.BlockedCountries;
-            
-            if (blockedCountries.Contains(country,StringComparer.OrdinalIgnoreCase))
+
+            if (blockedCountries.Contains(country, StringComparer.OrdinalIgnoreCase))
             {
                 _logger.LogWarning($"Access denied for country:{country}");
                 context.Response.StatusCode = StatusCodes.Status403Forbidden;
