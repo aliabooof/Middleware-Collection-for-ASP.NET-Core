@@ -128,7 +128,8 @@ You can modify the mock responses in the `MockGeoLocationService` implementation
 
 ## Real Geolocation Service Setup
 
-1. Obtain an API key from [ipstack](https://ipstack.com/).
+1. Obtain an API key from [ipstack](https://ipstack.com/).  
+    - use whatever API you want or make a custom database
 2. Update the `GeoApi` section in `appsettings.json` with your API key and base URL:
 
    ```json
