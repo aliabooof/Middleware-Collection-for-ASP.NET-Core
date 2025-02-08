@@ -66,10 +66,12 @@ app.Run();
 To use the mock service for testing:
 
 1. Replace `GeoLocationService` with `MockGeoLocationService` in your `Program.cs`.
+ 
    ```csharp
    builder.Services.AddSingleton<IGeoLocationService, MockGeoLocationService>();
    ```
 2. Update your `appsettings.json` to use mock data:
+ 
    ```json
    "GeoSettings": {
      "BlockedCountries": ["Russia", "North Korea", "USA"]
@@ -94,11 +96,13 @@ You can modify the mock responses in the `MockGeoLocationService` implementation
 
 1. Add an `X-Forwarded-For` header in your request to simulate an IP.
    - For example: `X-Forwarded-For: 8.8.8.8`
- Replace
+   Replace
+
   ```csharp
    var clientIp = context.Connection.RemoteIpAddress?.ToString();
    ```
- with 
+   with 
+   
    ```csharp
     var clientIp = context.Request.Headers["X-Forwarded-For"].FirstOrDefault()
                      ?? context.Connection.RemoteIpAddress?.ToString();
