@@ -94,20 +94,20 @@ You can modify the mock responses in the `MockGeoLocationService` implementation
 
 1. Add an `X-Forwarded-For` header in your request to simulate an IP.
    - For example: `X-Forwarded-For: 8.8.8.8`
-2. Use an IP that belongs to a blocked country (e.g., an IP from Russia).
-3. Ensure the response status is `403 Forbidden`.
-
-1. Replace
+ Replace
   ```csharp
-    var clientIp = context.Request.Headers["X-Forwarded-For"].FirstOrDefault()
-                     ?? context.Connection.RemoteIpAddress?.ToString();
+   var clientIp = context.Connection.RemoteIpAddress?.ToString();
    ```
  with 
- in your `Program.cs`.
    ```csharp
     var clientIp = context.Request.Headers["X-Forwarded-For"].FirstOrDefault()
                      ?? context.Connection.RemoteIpAddress?.ToString();
    ```
+ in your `GeographyMiddleware.cs`.
+ 
+2. Use an IP that belongs to a blocked country (e.g., an IP from Russia).
+3. Ensure the response status is `403 Forbidden`.
+
 5. Update your `appsettings.json` to use mock data:
    ```json
    "GeoSettings": {
