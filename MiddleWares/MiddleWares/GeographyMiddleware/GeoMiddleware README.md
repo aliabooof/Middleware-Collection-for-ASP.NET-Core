@@ -65,7 +65,7 @@ app.Run();
 
 To use the mock service for testing:
 
-1. Replace `IpStackGeoLocationService` with `MockGeoLocationService` in your `Program.cs`.
+1. Replace `GeoLocationService` with `MockGeoLocationService` in your `Program.cs`.
    ```csharp
    builder.Services.AddSingleton<IGeoLocationService, MockGeoLocationService>();
    ```
@@ -97,6 +97,26 @@ You can modify the mock responses in the `MockGeoLocationService` implementation
 2. Use an IP that belongs to a blocked country (e.g., an IP from Russia).
 3. Ensure the response status is `403 Forbidden`.
 
+1. Replace
+  ```csharp
+    var clientIp = context.Request.Headers["X-Forwarded-For"].FirstOrDefault()
+                     ?? context.Connection.RemoteIpAddress?.ToString();
+   ```
+ with 
+ in your `Program.cs`.
+   ```csharp
+    var clientIp = context.Request.Headers["X-Forwarded-For"].FirstOrDefault()
+                     ?? context.Connection.RemoteIpAddress?.ToString();
+   ```
+5. Update your `appsettings.json` to use mock data:
+   ```json
+   "GeoSettings": {
+     "BlockedCountries": ["Russia", "North Korea", "USA"]
+   }
+   ```
+            /* // for testing 
+             var clientIp = context.Request.Headers["X-Forwarded-For"].FirstOrDefault()
+                     ?? context.Connection.RemoteIpAddress?.ToString();*/
 ### **Using Postman**
 
 1. Open Postman and create a new request.
