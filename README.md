@@ -16,7 +16,7 @@ This repository contains a collection of reusable middlewares for ASP.NET Core a
 1. Clone the repository:
 
    ```bash
-   git clone (https://github.com/aliabooof/Middleware-Collection-for-ASP.NET-Core)
+   git clone https://github.com/aliabooof/Middleware-Collection-for-ASP.NET-Core
    ```
 
 2. Add the desired middleware to your ASP.NET Core project:
